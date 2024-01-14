@@ -10,16 +10,24 @@ The program takes as input a csv file that contains data representing the follow
 + 'Number' - Point's ID
 + 'Direction' - Point's direction
 
-The user is prompt to choose a point, a viewing angle and a distance. The point's ID is used to select the data point in the table. The viewing angle (in degrees) is the angular direction towards one side starting from the 'Direction' value of the data point. The distance value is the radius of an imaginary circle with the centre point being the data's coordinates.
+The user is prompt to choose a point, a viewing angle and a distance. The point's ID is used to select the data point in the table. The viewing angle (in degrees) is the angular direction towards one side starting from the 'Direction' value of the data point. The distance value is the radius distance starting from the coordinates of the selected point.
+
+These values are then used to build an imaginary cone with the vertex starting from the selected data point. The curvature of the cone extends to both sides by the inserted viewing angle with the middle point being on the 'Direction' value (which would be a Cardinal Point: North, East, West, South). The radius of the cone depends on the selecteed distance. The following picture represent a viewing angle of 45 degrees on each side:
+
+<div align="center">
+    <img src="readmefs/cone.png" style="width:150px">
+</div>
+
+The program then returns all of the other data points contained in this imaginary cone.
 
 ## How to Run the Program 🗔
-### Programming Language Needed ⌨️
+### Programming Language Needed 🐍⌨️
 
 ```
 Python3
 ```
 
-### Libraries Needed
+### Libraries Needed 📚
 + csv
 + math
 + matplotlib
@@ -139,12 +147,6 @@ def peripheralRange(startAngle, angleVision, angle):
     
     return angle <= startAngle + angleVision and angle >= startAngle - angleVision
 ```
-
-The viewing angle can be illustrated in the following way:
-
-<div align="center">
-    <img src="readmefs/cone.png" style="width:150px">
-</div>
 
 Lastly, the points that have been returned to the main function are printed out on the console. If no points are returned a "No visible points" is printed out instead.
 
